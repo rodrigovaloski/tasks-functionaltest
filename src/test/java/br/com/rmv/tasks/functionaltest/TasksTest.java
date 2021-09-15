@@ -9,6 +9,7 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 public class TasksTest {
 	
@@ -31,6 +32,8 @@ public class TasksTest {
 		WebDriver driver = new ChromeDriver();
 		driver.navigate().to("http://34.125.175.57:8080/tasks/");
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		ChromeOptions opt = new ChromeOptions();
+		opt.addArguments("headless", "no-sandbox");
 		return driver;
 	}
 	
