@@ -21,19 +21,12 @@ public class TasksTest {
 		System.setProperty("webdriver.chrome.driver",sysEnvStr);
 	}
 	
-	@Test
-	public void testeAmbiente() {					
-		WebDriver driver = new ChromeDriver();
-		driver.navigate().to("http://google.com");
-		driver.quit();
-	}
-	
 	public WebDriver acessarAplicacao() {			
-		WebDriver driver = new ChromeDriver();
-		driver.navigate().to("http://34.125.175.57:8080/tasks/");
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		ChromeOptions opt = new ChromeOptions();
 		opt.addArguments("headless", "no-sandbox");
+		WebDriver driver = new ChromeDriver(opt);
+		driver.navigate().to("http://34.125.175.57:8080/tasks/");
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);		
 		return driver;
 	}
 	
