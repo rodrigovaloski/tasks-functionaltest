@@ -45,7 +45,7 @@ public class TasksTest {
 	@Test
 	public void deveSalvarTarefaComSucesso() throws MalformedURLException {
 		WebDriver driver = acessarAplicacao();	
-		try {				
+		try {
 			//clicar em add todo
 			driver.findElement(By.id("addTodo")).click();
 			//escrever descricao
@@ -66,9 +66,9 @@ public class TasksTest {
 	public void deveRemoverTarefaTesteSeleniumComSucesso() throws MalformedURLException {
 		WebDriver driver = acessarAplicacao();	
 		try {
-			final String url = "/tasks/delete/2";
+			String xPath =  "//*[@id=\'todoTable\']/tbody/tr/td//a[contains(@href,'/tasks/delete/3')]/@href";
 			//clicar em remove
-			driver.findElement( By.xpath("//a[@href="+url+"]")).click();		
+			driver.findElement(By.xpath(xPath)).click();		
 			//verificar mensagem de sucesso
 			String message = driver.findElement(By.id("message")).getText();
 			assertEquals("Success!", message);			
@@ -80,10 +80,10 @@ public class TasksTest {
 	@Test
 	public void deveRemoverTarefaTesteAPIComSucesso() throws MalformedURLException {
 		WebDriver driver = acessarAplicacao();	
-		try {
-			final String url = "/tasks/delete/2";
+		try {			
+			String xPath =  "//*[@id=\'todoTable\']/tbody/tr/td//a[contains(@href,'/tasks/delete/1')]/@href";
 			//clicar em remove
-			driver.findElement( By.xpath("//a[@href="+url+"]")).click();		
+			driver.findElement(By.xpath(xPath)).click();
 			//verificar mensagem de sucesso
 			String message = driver.findElement(By.id("message")).getText();
 			assertEquals("Success!", message);
